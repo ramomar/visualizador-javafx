@@ -2,7 +2,7 @@ import java.time.LocalTime;
 
 public class Llegada {
   public final int           numeroCliente;
-  public final LocalTime     llegada;
+  public final LocalTime     hora;
   public final Transacciones transacciones;
   public final int           cantidadTransacciones;
 
@@ -12,12 +12,12 @@ public class Llegada {
     this.numeroCliente         = numeroCliente;
     this.transacciones         = transacciones;
     this.cantidadTransacciones = transacciones.cantidadTransacciones;
-    this.llegada               = LocalTime.ofSecondOfDay(segundosDesdeInicioDelDia);
+    this.hora                  = LocalTime.ofSecondOfDay(segundosDesdeInicioDelDia);
   }
 
   public String toString() {
     return "Número del cliente: " + numeroCliente         + "\n" +
-           "Hora de llegada: "    + llegada.toString()    + "\n" +
+           "Hora de llegada: "    + hora.toString()    + "\n" +
            "# transacciones: "    + cantidadTransacciones + "\n" +
            "Resumen:  "           + transacciones.toString();
   } 

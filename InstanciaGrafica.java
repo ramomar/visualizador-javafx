@@ -9,8 +9,8 @@ import javafx.collections.ObservableList;
 import java.util.List;
 import java.util.ArrayList;
 
-public class GeneradasGrafica extends LineChart<String, Number> {
-  public GeneradasGrafica(Instancia instancia) {
+public class InstanciaGrafica extends LineChart<String, Number> {
+  public InstanciaGrafica(Instancia instancia) {
     super(new CategoryAxis(), hacerEjeY());
     this.setTitle("Llegadas en un día");
     this.getData().add(hacerSerie(hacerDatapoints(instancia.llegadas)));

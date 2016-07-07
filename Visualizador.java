@@ -7,9 +7,9 @@ public class Visualizador extends Application {
   @Override
   public void start(Stage stage) {
     Instancia instancia      = CargadorInstancias.cargar(new File("1.txt"));
-    GeneradasGrafica grafica = new GeneradasGrafica(instancia);
+    InstanciaGrafica grafica = new InstanciaGrafica(instancia);
 
-    Scene scene = new Scene(grafica, 800, 600);
+    Scene scene = new Scene(grafica, 1366, 768);
 
     stage.setTitle("Visualizador");
     stage.setScene(scene);

@@ -8,55 +8,58 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import java.util.List;
 import java.util.ArrayList;
+import java.time.LocalTime;
+import javafx.util.StringConverter;
 
-public class InstanciaGrafica extends LineChart<String, Number> {
+public class InstanciaGrafica extends LineChart<Number, Number> {
   public InstanciaGrafica(Instancia instancia) {
-    super(new CategoryAxis(), hacerEjeY());
+    super(hacerEjeX(), hacerEjeY());
     this.setTitle("Llegadas en un día");
     this.getData().add(hacerSerie(hacerDatapoints(instancia.llegadas)));
   }
 
-  private Series<String, Number> hacerSerie(ObservableList<Data<String, Number>> datapoints) {
-    return new Series<String, Number>(datapoints);
+  private Series<Number, Number> hacerSerie(ObservableList<Data<Number, Number>> datapoints) {
+    return new Series<Number, Number>(datapoints);
   }
 
-  private ObservableList<Data<String, Number>> hacerDatapoints(List<Llegada> llegadas) {
-    ArrayList<Data<String, Number>> datapoints = new ArrayList<Data<String, Number>>();
+  private ObservableList<Data<Number, Number>> hacerDatapoints(List<Llegada> llegadas) {
+    ArrayList<Data<Number, Number>> datapoints = new ArrayList<Data<Number, Number>>();
 
     for (Llegada llegada : llegadas) { 
-      Data<String, Number> datapoint =
-        new Data<String, Number>(llegada.hora.toString(), llegada.cantidadTransacciones);
+      Data<Number, Number> datapoint =
+        new Data<Number, Number>(llegada.hora.toSecondOfDay(), llegada.cantidadTransacciones);
       datapoints.add(datapoint);
     }
 
     return FXCollections.observableList(datapoints);
   }
 
-  private static CategoryAxis hacerEjeX() {
-    // Asumí que el horario del banco es de 9 a 4 de la tarde,
-    // quizas sea mejor hacer la generación de estas categorias de manera
-    // dinámica si hay necesidad
-    ObservableList<String> categorias = FXCollections.observableList(new ArrayList<String>());
-    categorias.add("9");
-    categorias.add("10");
-    categorias.add("11");
-    categorias.add("12");
-    categorias.add("13");
-    categorias.add("14");
-    categorias.add("15");
-    categorias.add("16");
-    categorias.add("17");
-    categorias.add("18");
-
-    CategoryAxis ejeX = new CategoryAxis(categorias);
+  private static NumberAxis hacerEjeX() {
+    // quizas puede moverse todo esto a una clase
+    double lowerBound           = LocalTime.parse("09:00").toSecondOfDay();
+    double upperBound           = LocalTime.parse("17:30").toSecondOfDay();
+    double cotaCadaHora         = 3600;
+    double cotaCadaCuartoDeHora = cotaCadaHora/4;
+    NumberAxis ejeX = new NumberAxis(lowerBound, upperBound, cotaCadaCuartoDeHora);
     ejeX.setLabel("Hora del día");
-
+    ejeX.setTickLabelFormatter(new SegundosConverter());
     return ejeX;
   }
 
   private static NumberAxis hacerEjeY() {
     NumberAxis ejeY = new NumberAxis();
-    ejeY.setLabel("Cantidad de llegadas");
+    ejeY.setLabel("Cantidad de transacciones");
     return ejeY;
   }
+
+  private static class SegundosConverter extends StringConverter<Number> {
+    public Number fromString(String str) {
+      return LocalTime.parse(str).toSecondOfDay();
+    }
+    
+    public String toString(Number seconds) {
+      return LocalTime.ofSecondOfDay(seconds.intValue()).toString();
+    }
+  }
 }
+

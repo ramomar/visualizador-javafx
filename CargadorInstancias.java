@@ -64,9 +64,15 @@ public abstract class CargadorInstancias {
     File archivo        = new File(filename);
     Instancia instancia = CargadorInstancias.cargar(archivo);
     
-    System.out.println(instancia.tamano);
+    System.out.println(instancia.getTamano());
 
-    for (Llegada l : instancia.llegadas) {
+    for (Llegada l : instancia.getLlegadas()) {
+      System.out.println(l);
+    }
+
+    System.out.println("\n------");
+
+    for (Llegada l : instancia.getLlegadasEnHora(10)) {
       System.out.println(l);
     }
   }

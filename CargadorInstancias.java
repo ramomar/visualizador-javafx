@@ -38,16 +38,16 @@ public abstract class CargadorInstancias {
   }
 
   private static Llegada parsearLinea(String linea) {
-    String[] componentes = linea.split(",");
+    String[] columnas = linea.split(",");
 
-    int cliente        = Integer.parseInt(componentes[0]);
-    int segundos       = Integer.parseInt(componentes[1]);
-    int depositos      = Integer.parseInt(componentes[2]);
-    int retiros        = Integer.parseInt(componentes[3]);
-    int pagos          = Integer.parseInt(componentes[4]); 
-    int transferencias = Integer.parseInt(componentes[5]);
-    int entregas       = Integer.parseInt(componentes[6]);
-    int cambios        = Integer.parseInt(componentes[7]);
+    int cliente        = Integer.parseInt(columnas[0]);
+    int segundos       = Integer.parseInt(columnas[1]);
+    int depositos      = Integer.parseInt(columnas[2]);
+    int retiros        = Integer.parseInt(columnas[3]);
+    int pagos          = Integer.parseInt(columnas[4]); 
+    int transferencias = Integer.parseInt(columnas[5]);
+    int entregas       = Integer.parseInt(columnas[6]);
+    int cambios        = Integer.parseInt(columnas[7]);
 
     Transacciones transacciones = new Transacciones(depositos,
                                                     retiros,

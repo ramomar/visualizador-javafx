@@ -1,14 +1,23 @@
 import java.util.Collection;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Set;
 import java.util.List;
 import java.util.ArrayList;
 
+
+// TODO : hacer la lista de llegadas inmutable
 public class Instancia {
   private Map<Integer, List<Llegada>> mapeoHoraLlegadas;
 
   public Instancia(List<Llegada> llegadas) {
     inicializarMapeos(llegadas);
+  }
+
+  // TODO: buscar un mejor nombre para esto
+  // Regresa un conjunto con las horas (hh) que estan en esta instancia
+  public Set<Integer> getHorasEnInstancia() {
+    return mapeoHoraLlegadas.keySet();
   }
 
   // 0 < hora < 23

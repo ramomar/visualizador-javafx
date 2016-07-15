@@ -1,3 +1,5 @@
+import com.posgrado.comun.Instancia;
+
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.chart.XYChart.Data;

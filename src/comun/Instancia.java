@@ -1,10 +1,6 @@
-import java.util.Collection;
-import java.util.Map;
-import java.util.HashMap;
-import java.util.Set;
-import java.util.List;
-import java.util.ArrayList;
+package comun;
 
+import java.util.*;
 
 // TODO : hacer la lista de llegadas inmutable
 public class Instancia {

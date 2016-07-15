@@ -1,3 +1,5 @@
+package comun;
+
 import java.time.LocalTime;
 
 public class Llegada {
@@ -9,6 +11,7 @@ public class Llegada {
   public Llegada(int numeroCliente,
                  int segundosDesdeInicioDelDia,
                  Transacciones transacciones) {
+
     this.numeroCliente         = numeroCliente;
     this.transacciones         = transacciones;
     this.cantidadTransacciones = transacciones.cantidadTransacciones;
@@ -17,7 +20,7 @@ public class Llegada {
 
   public String toString() {
     return "Número del cliente: " + numeroCliente         + "\n" +
-           "Hora de llegada: "    + hora.toString()    + "\n" +
+           "Hora de llegada: "    + hora.toString()       + "\n" +
            "# transacciones: "    + cantidadTransacciones + "\n" +
            "Resumen:  "           + transacciones.toString();
   } 

@@ -1,3 +1,5 @@
+package comun;
+
 public class Transacciones {
   private int[] frecuencias = new int[6];
 

@@ -1,3 +1,5 @@
+package com.posgrado.gui;
+
 import com.posgrado.comun.Instancia;
 
 import javafx.scene.chart.LineChart;

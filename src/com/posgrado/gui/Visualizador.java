@@ -1,4 +1,8 @@
+package com.posgrado.gui;
+
 import com.posgrado.comun.Instancia;
+import com.posgrado.parser.CargadorInstancias;
+import com.posgrado.gui.RealInstanciaGrafica;
 
 import javafx.application.Application;
 import javafx.scene.Group;

@@ -1,5 +1,6 @@
 package com.posgrado.comun;
 
+import com.posgrado.comun.Llegada;
 import java.util.*;
 
 // TODO : hacer la lista de llegadas inmutable

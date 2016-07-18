@@ -1,4 +1,4 @@
-package comun;
+package com.posgrado.comun;
 
 import java.time.LocalTime;
 

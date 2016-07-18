@@ -1,8 +1,6 @@
-package comun;
+package com.posgrado.comun;
 
 public class Transacciones {
-  private int[] frecuencias = new int[6];
-
   public final int depositos;
   public final int retiros;
   public final int pagos;

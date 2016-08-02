@@ -10,15 +10,7 @@ public class VisualizadorApp extends Application {
     (new Visualizador(stage, 800, 600)).mostrar();
   }
 
-  /*private static DirectoryChooser hacerSelectorDirectorio(File carpetaInicial) {
-    DirectoryChooser selectorDirectorio = new DirectoryChooser();
-    selectorDirectorio.setTitle("Seleccionar instancias");
-    selectorDirectorio.setInitialDirectory(carpetaInicial);
-    return selectorDirectorio;
-  }*/
-
   public static void main(String[] args) {
     Application.launch(VisualizadorApp.class, args);
   }
 }
-

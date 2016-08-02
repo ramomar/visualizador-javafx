@@ -36,6 +36,4 @@ public class Transacciones {
            this.cambios               + "C " +
            this.cantidadTransacciones + "TOT";
   }
-
 }
-

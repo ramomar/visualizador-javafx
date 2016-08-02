@@ -10,14 +10,11 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import java.util.Set;
-import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Collections;
 import java.time.LocalTime;
-import javafx.util.StringConverter;
 
 // no es la mejor opción heredar de LineChart, hay que cambiar esto
 public class RealInstanciaGrafica extends LineChart<String, Number> {

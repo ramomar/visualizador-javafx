@@ -9,24 +9,21 @@ import javafx.scene.control.MenuItem;
 // TODO: Quizas puede haber una mejor manera de hacer esto
 public class MenuVisualizador extends MenuBar {
 
-  public final MenuArchivo menuArchivo = new MenuArchivo();
+  private final MenuArchivo menuArchivo = new MenuArchivo();
 
-  public MenuVisualizador() {
+  public MenuVisualizador(EventHandler<ActionEvent> handlerAbrirCarpeta) {
     super();
     this.getMenus().add(menuArchivo);
+    menuArchivo.abrirCarpetaItem.setOnAction(handlerAbrirCarpeta);
   }
 }
 
 class MenuArchivo extends Menu {
-  private final MenuItem menuAbrir;
+  public final MenuItem abrirCarpetaItem;
 
   MenuArchivo() {
     super("Archivo");
-    menuAbrir = new MenuItem("Abrir carpeta");
-    this.getItems().add(menuAbrir);
-  }
-
-  public void setAccionClickAbrirMenuitem(EventHandler<ActionEvent> handler) {
-    menuAbrir.setOnAction(handler);
+    abrirCarpetaItem = new MenuItem("Abrir carpeta");
+    this.getItems().add(abrirCarpetaItem);
   }
 }

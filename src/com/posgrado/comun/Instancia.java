@@ -11,9 +11,8 @@ public class Instancia {
     inicializarMapeos(llegadas);
   }
 
-  // TODO: buscar un mejor nombre para esto
   // Regresa un conjunto con las horas (hh) que estan en esta instancia
-  public Set<Integer> getHorasEnInstancia() {
+  public Set<Integer> getHorasConLlegadasDeClientes() {
     return mapeoHoraLlegadas.keySet();
   }
 

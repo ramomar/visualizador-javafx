@@ -1,6 +1,7 @@
 package com.posgrado.gui;
 
 import com.posgrado.comun.Instancia;
+import com.posgrado.gui.graficas.ResumenRealLlegadasGrafica;
 import com.posgrado.parser.CargadorInstancias;
 
 import javafx.collections.FXCollections;
@@ -88,7 +89,7 @@ public class Visualizador {
       if (graficasCargadas.containsKey(seleccionado)) {
         grafica = graficasCargadas.get(seleccionado);
       } else {
-        grafica = new RealInstanciaGrafica(instancia);
+        grafica = new ResumenRealLlegadasGrafica(instancia);
         graficasCargadas.put(seleccionado, grafica);
       }
 

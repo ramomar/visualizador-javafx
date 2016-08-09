@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.Map;
 
 // TODO: quizas se pueda nombrar a esto de una manera mejor
-public class ResumenRealLlegadasGrafica extends GraficaInstanciaBase {
+public class RealLlegadasGrafica extends GraficaInstanciaBase {
 
-  public ResumenRealLlegadasGrafica(Instancia instancia) {
+  public RealLlegadasGrafica(Instancia instancia) {
     super(instancia);
     this.setTitle("Llegadas en un día (Real)");
   }

@@ -11,7 +11,7 @@ public class Instancia {
     inicializarMapeos(llegadas);
   }
 
-  // Regresa un conjunto con las horas (hh) que estan en esta instancia
+  // Regresa un conjunto con las horas en las que al menos un cliente llego al banco
   public Set<Integer> getHorasConLlegadasDeClientes() {
     return mapeoHoraLlegadas.keySet();
   }
@@ -23,7 +23,7 @@ public class Instancia {
 
   public List<Llegada> getLlegadas() {
     Collection<List<Llegada>> listaDeLlegadas = this.mapeoHoraLlegadas.values();
-    List<Llegada> llegadas                    = new ArrayList<Llegada>();
+    List<Llegada> llegadas                    = new ArrayList<>();
 
     for (List<Llegada> l : listaDeLlegadas) llegadas.addAll(l);
 
@@ -40,9 +40,9 @@ public class Instancia {
   }
 
   private void inicializarMapeos(List<Llegada> llegadas) {
-    Map<Integer, List<Llegada>> mapeos = new HashMap<Integer, List<Llegada>>();
+    Map<Integer, List<Llegada>> mapeos = new HashMap<>();
 
-    for(int i=0; i<24; i++) mapeos.put(i, new ArrayList<Llegada>());
+    for(int i=0; i<24; i++) mapeos.put(i, new ArrayList<>());
 
     for (Llegada l : llegadas) mapeos.get(l.hora.getHour()).add(l);
 

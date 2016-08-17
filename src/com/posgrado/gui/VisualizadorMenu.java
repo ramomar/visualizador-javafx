@@ -6,12 +6,11 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 
-// TODO: Quizas puede haber una mejor manera de hacer esto
-public class MenuVisualizador extends MenuBar {
+public class VisualizadorMenu extends MenuBar {
 
   private final MenuArchivo menuArchivo = new MenuArchivo();
 
-  public MenuVisualizador(EventHandler<ActionEvent> handlerAbrirCarpeta) {
+  public VisualizadorMenu(EventHandler<ActionEvent> handlerAbrirCarpeta) {
     super();
     this.getMenus().add(menuArchivo);
     menuArchivo.abrirCarpetaItem.setOnAction(handlerAbrirCarpeta);

@@ -28,7 +28,7 @@ public class Visualizador {
   private Scene            escenaPrincipal;
   private BorderPane       contenedorPrincipal;
   private VBox             contenedorSuperior;
-  private MenuVisualizador menuPrincipal;
+  private VisualizadorMenu menuPrincipal;
   private ComboBox selectorInstancias;
 
   // Mapeo de un nombre de un archivo de instancia -> Instancia
@@ -42,7 +42,7 @@ public class Visualizador {
     contenedorPrincipal = new BorderPane();
     contenedorSuperior  = new VBox();
     selectorInstancias  = new ComboBox();
-    menuPrincipal       = new MenuVisualizador(cargarInstancias);
+    menuPrincipal       = new VisualizadorMenu(cargarInstanciasHandler);
 
     selectorInstancias.valueProperty().addListener(instanciaSeleccionadaListener);
 
@@ -60,7 +60,7 @@ public class Visualizador {
     escenario.show();
   }
 
-  private EventHandler<ActionEvent> cargarInstancias = new EventHandler<ActionEvent>() {
+  private EventHandler<ActionEvent> cargarInstanciasHandler = new EventHandler<ActionEvent>() {
     public void handle(ActionEvent e) {
       instanciasCargadas = new HashMap<String, Instancia>();
       graficasCargadas   = new HashMap<String, LineChart<String, Number>>();

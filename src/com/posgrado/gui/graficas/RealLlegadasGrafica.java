@@ -11,7 +11,7 @@ public class RealLlegadasGrafica extends GraficaInstanciaBase {
 
   public RealLlegadasGrafica(Instancia instancia) {
     super(instancia);
-    this.setTitle("Llegadas en un día (Real)");
+    this.setTitle("Llegadas en un día");
   }
 
   protected List<Data<String, Number>> hacerDatapoints(Instancia instancia, Map<Integer, String> mapeoCategorias) {

@@ -1,5 +1,6 @@
-package com.posgrado.gui;
+package com.posgrado;
 
+import com.posgrado.gui.Visualizador;
 import javafx.application.Application;
 import javafx.stage.Stage;
 

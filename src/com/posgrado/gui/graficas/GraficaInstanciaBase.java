@@ -29,7 +29,7 @@ abstract class GraficaInstanciaBase extends LineChart<String, Number> {
 
       this
         .getData()
-        .addAll(hacerSerie(FXCollections.observableArrayList(hacerDatapoints(instancia, mapeoCategorias)), "Llegadas"),
+        .addAll(hacerSerie(FXCollections.observableArrayList(hacerDatapoints(instancia, mapeoCategorias)), "Instancia"),
                 hacerSerie(FXCollections.observableArrayList(hacerDatapointsPromedio(instancias, mapeoCategorias)), "Media"));
 
     }

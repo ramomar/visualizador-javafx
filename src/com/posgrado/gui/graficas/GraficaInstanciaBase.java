@@ -14,7 +14,7 @@ abstract class GraficaInstanciaBase extends LineChart<String, Number> {
     protected CategoryAxis ejeX;
     protected NumberAxis   ejeY;
 
-    public GraficaInstanciaBase(Instancia instancia) {
+    public GraficaInstanciaBase(Instancia instancia, List<Instancia> instancias) {
       super(new CategoryAxis(), new NumberAxis());
       ejeX = (CategoryAxis) this.getXAxis();
       ejeY = (NumberAxis)   this.getYAxis();
@@ -29,15 +29,22 @@ abstract class GraficaInstanciaBase extends LineChart<String, Number> {
 
       this
         .getData()
-        .add(hacerSerie(FXCollections.observableArrayList(hacerDatapoints(instancia, mapeoCategorias))));
+        .addAll(hacerSerie(FXCollections.observableArrayList(hacerDatapoints(instancia, mapeoCategorias)), "Llegadas"),
+                hacerSerie(FXCollections.observableArrayList(hacerDatapointsPromedio(instancias, mapeoCategorias)), "Media"));
+
     }
 
     protected abstract List<Data<String, Number>> hacerDatapoints(Instancia instancia,
                                                                   Map<Integer, String> mapeoCategorias);
 
-    protected Series<String, Number> hacerSerie(ObservableList<Data<String, Number>> datapoints) {
-        return new Series<>("Llegadas", datapoints);
+    protected Series<String, Number> hacerSerie(ObservableList<Data<String, Number>> datapoints, String nombre) {
+        return new Series<>(nombre, datapoints);
     }
+
+    protected abstract List<Data<String, Number>> hacerDatapointsPromedio(List<Instancia> instancias,
+                                                                        Map<Integer, String> mapeoCateogorias);
+
+
 
     private static Map<Integer, String> hacerMapeoCategorias(int horaInicial, int horaFinal) {
       int horas = horaFinal - horaInicial;

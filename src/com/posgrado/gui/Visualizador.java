@@ -21,6 +21,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
 
@@ -113,8 +114,8 @@ public class Visualizador {
       if (graficasCargadas.containsKey(seleccionado)) {
         graficas = graficasCargadas.get(seleccionado);
       } else {
-        LineChart<String, Number> real      = new RealLlegadasGrafica(instancia);
-        LineChart<String, Number> acumulada = new AcumuladaLlegadasGrafica(instancia);
+        LineChart<String, Number> real      = new RealLlegadasGrafica(instancia, new ArrayList(instanciasCargadas.values()));
+        LineChart<String, Number> acumulada = new AcumuladaLlegadasGrafica(instancia, new ArrayList(instanciasCargadas.values()));
         graficas = new Graficas(real, acumulada);
         graficasCargadas.put(seleccionado, graficas);
       }

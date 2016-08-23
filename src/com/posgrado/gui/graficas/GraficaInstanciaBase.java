@@ -21,7 +21,7 @@ abstract class GraficaInstanciaBase extends LineChart<String, Number> {
       ejeX.setLabel("Intervalo de hora del día");
       ejeY.setLabel("Cantidad de clientes");
 
-      Map<Integer, String> mapeoCategorias = hacerMapeoCategorias(9, 17);
+      Map<Integer, String> mapeoCategorias = hacerMapeoCategorias(9, 17); // 9 de la mañana a 5 de la tarde
 
       ArrayList<String> categorias  = new ArrayList<>(mapeoCategorias.values());
       Collections.sort(categorias);
@@ -43,8 +43,6 @@ abstract class GraficaInstanciaBase extends LineChart<String, Number> {
 
     protected abstract List<Data<String, Number>> hacerDatapointsPromedio(List<Instancia> instancias,
                                                                         Map<Integer, String> mapeoCateogorias);
-
-
 
     private static Map<Integer, String> hacerMapeoCategorias(int horaInicial, int horaFinal) {
       int horas = horaFinal - horaInicial;

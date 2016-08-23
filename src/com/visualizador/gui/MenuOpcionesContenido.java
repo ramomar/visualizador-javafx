@@ -1,4 +1,4 @@
-package com.posgrado.gui;
+package com.visualizador.gui;
 
 import javafx.collections.FXCollections;
 import javafx.scene.control.ComboBox;

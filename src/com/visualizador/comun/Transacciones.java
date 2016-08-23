@@ -1,4 +1,4 @@
-package com.posgrado.comun;
+package com.visualizador.comun;
 
 public class Transacciones {
   public final int depositos;

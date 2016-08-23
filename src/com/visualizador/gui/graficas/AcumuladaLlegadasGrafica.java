@@ -1,6 +1,6 @@
-package com.posgrado.gui.graficas;
+package com.visualizador.gui.graficas;
 
-import com.posgrado.comun.Instancia;
+import com.visualizador.comun.Instancia;
 
 import java.util.ArrayList;
 import java.util.HashMap;

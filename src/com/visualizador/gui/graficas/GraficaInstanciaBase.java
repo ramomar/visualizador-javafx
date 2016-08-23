@@ -1,6 +1,6 @@
-package com.posgrado.gui.graficas;
+package com.visualizador.gui.graficas;
 
-import com.posgrado.comun.Instancia;
+import com.visualizador.comun.Instancia;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.CategoryAxis;

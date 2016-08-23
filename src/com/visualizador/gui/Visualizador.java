@@ -1,32 +1,39 @@
-package com.posgrado.gui;
+package com.visualizador.gui;
 
-import com.posgrado.comun.Instancia;
-import com.posgrado.gui.graficas.AcumuladaLlegadasGrafica;
-import com.posgrado.gui.graficas.RealLlegadasGrafica;
-import com.posgrado.parser.CargadorInstancias;
+import com.visualizador.comun.Instancia;
+import com.visualizador.gui.graficas.AcumuladaLlegadasGrafica;
+import com.visualizador.gui.graficas.RealLlegadasGrafica;
+import com.visualizador.parser.CargadorInstancias;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.chart.LineChart;
 import javafx.scene.control.Toggle;
+import javafx.scene.image.WritableImage;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.transform.Scale;
 import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
 
-// TODO: Quizas en el futuro sea buena idea migrar a FXML para tener MVC
-// TODO: Encontrar forma mejor de mantener el estado de las graficas
 public class Visualizador {
   private Stage                 escenario;
   private Scene                 escenaPrincipal;
@@ -49,7 +56,7 @@ public class Visualizador {
     escenario             = stage;
     contenedorPrincipal   = new BorderPane();
     contenedorSuperior    = new VBox();
-    menuPrincipal         = new MenuPrincipal(cargarInstanciasHandler);
+    menuPrincipal         = new MenuPrincipal(cargarInstanciasHandler, exportarComoImagenHandler);
     menuOpcionesContenido = new MenuOpcionesContenido(instanciaSeleccionadaListener, tipoGraficaListener);
 
     contenedorSuperior.setAlignment(Pos.CENTER);
@@ -66,12 +73,29 @@ public class Visualizador {
     escenario.show();
   }
 
+  private EventHandler<ActionEvent> exportarComoImagenHandler = new EventHandler<ActionEvent>() {
+    public void handle(ActionEvent e) {
+      SnapshotParameters params = new SnapshotParameters();
+      params.setTransform(new Scale(2, 2));
+      WritableImage img = contenedorPrincipal.getCenter().snapshot(params, null);
+      BufferedImage bi  = SwingFXUtils.fromFXImage(img, null);
+      File archivo      = hacerSelectorArchivo("Guardar archivo").showSaveDialog(escenario);
+      if (archivo != null) {
+        try {
+          ImageIO.write(bi, "png", archivo);
+        } catch (IOException ex){
+          System.out.println(ex.getMessage());
+        }
+      }
+    }
+  };
+
   private EventHandler<ActionEvent> cargarInstanciasHandler = new EventHandler<ActionEvent>() {
     public void handle(ActionEvent e) {
       instanciasCargadas = new HashMap<String, Instancia>();
       graficasCargadas   = new HashMap<String, Graficas>();
 
-      File carpetaInstancias = hacerSelectorDirectorio().showDialog(escenario);
+      File carpetaInstancias = hacerSelectorDirectorio("Seleccionar instancias").showDialog(escenario);
 
       ObservableList<String> nombresArchivos = FXCollections.observableArrayList();
 
@@ -132,9 +156,17 @@ public class Visualizador {
     }
   };
 
-  public static DirectoryChooser hacerSelectorDirectorio() {
+
+  private static FileChooser hacerSelectorArchivo(String titulo) {
+    FileChooser fileChooser = new FileChooser();
+    fileChooser.setTitle(titulo);
+    fileChooser.setInitialFileName(LocalDate.now() + ".png");
+    return fileChooser;
+  }
+
+  private static DirectoryChooser hacerSelectorDirectorio(String titulo) {
     DirectoryChooser directoryChooser = new DirectoryChooser();
-    directoryChooser.setTitle("Seleccionar instancias");
+    directoryChooser.setTitle(titulo);
     directoryChooser.setInitialDirectory(new File("."));
     return directoryChooser;
   }

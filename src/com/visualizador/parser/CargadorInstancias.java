@@ -1,8 +1,8 @@
-package com.posgrado.parser;
+package com.visualizador.parser;
 
-import com.posgrado.comun.Instancia;
-import com.posgrado.comun.Llegada;
-import com.posgrado.comun.Transacciones;
+import com.visualizador.comun.Instancia;
+import com.visualizador.comun.Llegada;
+import com.visualizador.comun.Transacciones;
 
 import java.io.File;
 import java.io.FileReader;

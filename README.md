@@ -13,4 +13,6 @@ Se me pidió que fuera implementado en Java; así que eligí desarrollarlo con J
 
 ## Funcionalidades 
 - Cargar instancias
-- Exportar gráfica a imágen
+- Exportar gráfica a imagen
+- Vista acumulada
+- Vista de la media
